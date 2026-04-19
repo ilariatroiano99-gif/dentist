@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanzi Dental Clinic | Eccellenza Odontoiatrica e Medicina Estetica</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Prata&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --logo-verde: #8cc63f; 
+            --dark-verde: #264c15;
+            --gold-aesthetic: #B59F67;
+            --text: #1A1A1A;
+            --light-bg: #F8FBFA;
+            --primary-blue: #233e5c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html.smooth { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--text); background: white; line-height: 1.6; overflow-x: hidden; }
+
+        /* --- NAVBAR --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 8%; background: rgba(255, 255, 255, 0.95); position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Soft shadow */
+            backdrop-filter: blur(10px); /* Glassmorphism effect */
+        }
+
+        .logo-link { text-decoration: none; cursor: pointer; display: flex; align-items: center; }
+        .logo-img { height: 50px; }
+
+        .nav-links a { text-decoration: none; color: var(--text); margin-left: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--logo-verde); }
+        .btn-cta { background: var(--logo-verde); color: white !important; padding: 12px 25px; border-radius: 4px; transition: 0.3s; box-shadow: 0 4px 15px rgba(140, 198, 63, 0.3); }
+        .btn-cta:hover { background: var(--dark-verde); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(38, 76, 21, 0.3); }
+
+        /* --- HERO --- */
+        .hero { 
+            height: 80vh; 
+            background: url('https://www.tanzidentalclinic.it/wp-content/uploads/2017/12/tanzi-slider.jpg') center/cover;
+            display: flex; align-items: center; padding: 0 8%;
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
+        }
+        .hero::before {
+            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+            z-index: 1;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .hero-content { position: relative; z-index: 2; max-width: 750px; color: white; }
+        .hero-content h1 { font-family: 'Prata', serif; font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+        .hero-content p { font-size: 1.1rem; margin-bottom: 30px; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+        .hero-btn { display: inline-block; background: var(--logo-verde); color: white; padding: 15px 30px; text-decoration: none; font-weight: 700; border-radius: 4px; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);}
+        .hero-btn:hover { background: var(--logo-verde); transform: scale(1.05); }
+
+        /* --- ANIMAZIONI --- */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(140, 198, 63, 0.8); }
+            70% { box-shadow: 0 0 0 20px rgba(140, 198, 63, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(140, 198, 63, 0); }
+        }
+        .btn-pulse { animation: pulse 2s infinite; }
+
+        /* --- STATISTICHE --- */
+        .stats-section { padding: 80px 8%; background: var(--dark-verde); color: white; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
+        .stat-box h3 { font-size: 3.5rem; font-family: 'Prata', serif; color: var(--logo-verde); margin-bottom: 5px; }
+        .stat-box p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; color: #ddd; }
+
+        /* --- RECENSIONI --- */
+        .reviews-section { padding: 100px 8%; background: var(--light-bg); }
+        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .review-card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); position: relative; transition: 0.3s; }
+        .review-card:hover { transform: translateY(-5px); }
+        .review-card .stars { color: #fadc11; margin-bottom: 15px; font-size: 1.2rem; }
+        .review-card p { font-style: italic; color: #666; margin-bottom: 20px; font-size: 0.95rem; }
+        .review-card h5 { font-family: 'Prata', serif; font-size: 1.2rem; color: var(--text); }
+        .review-card .g-icon { position: absolute; top: 30px; right: 30px; font-size: 1.5rem; color: #4285F4; }
+
+        /* --- PARTNER --- */
+        .partners-section { padding: 50px 8%; background: #f4f6f5; text-align: center; border-top: 1px solid #eaeaea; }
+        .partners-section p { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #777; margin-bottom: 25px; font-weight: 700; }
+        .partners-grid { display: flex; justify-content: center; align-items: center; gap: 70px; flex-wrap: wrap; opacity: 0.6; filter: grayscale(100%); transition: 0.3s; }
+        .partners-grid:hover { filter: grayscale(0%); opacity: 1; }
+        .partners-grid h3 { font-size: 1.8rem; font-weight: 900; font-family: 'Montserrat', sans-serif; margin:0; }
+
+        /* --- SEZIONI GENERALI --- */
+        .clinic-section, .specs, .works, .team { padding: 100px 8%; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-family: 'Prata', serif; font-size: 3rem; color: var(--dark-verde); margin-bottom: 15px; }
+        .section-header p { max-width: 700px; margin: 0 auto; color: #666; font-size: 1rem; }
+        
+        .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .tech-item { background: white; padding: 30px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border-top: 5px solid var(--logo-verde); transition: 0.3s; }
+        .tech-item:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .tech-item h4 { color: var(--dark-verde); margin-bottom: 15px; font-size: 1.1rem; }
+        .tech-item p { font-size: 0.85rem; }
+        
+        /* --- SPECIALIZZAZIONI --- */
+        .specs-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #ddd; border: 1px solid #ddd; }
+        .specs-list a { text-decoration: none; color: inherit; display: block; }
+        .spec-box { background: white; padding: 30px 15px; text-align: center; transition: 0.3s; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; height: 100%; display: flex; align-items: center; justify-content: center; }
+        .spec-box:hover { background: var(--logo-verde); color: white; transform: scale(1.05); z-index: 10; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border-radius: 5px;}
+
+        /* --- I NOSTRI LAVORI --- */
+        .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .work-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-bottom: 4px solid var(--logo-verde); transition: transform 0.3s; }
+        .work-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .work-img-container { display: flex; height: 220px; }
+        .work-img-container div { width: 50%; background-size: cover; background-position: center; position: relative; }
+        .work-img-container span { position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: white; font-size: 0.6rem; padding: 4px 8px; font-weight: 700; border-radius: 3px; text-transform: uppercase; }
+
+        /* --- AESTHETIC DIVISION --- */
+        .aesthetic { background: linear-gradient(135deg, #111, #222); color: white; padding: 100px 8%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .aesthetic h2 { font-family: 'Prata', serif; font-size: 3.5rem; color: var(--gold-aesthetic); line-height: 1.1; }
+        .aesthetic-list { margin-top: 30px; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .aesthetic-list li { border-left: 2px solid var(--gold-aesthetic); padding-left: 15px; font-size: 0.9rem; color: #ccc; }
+
+        /* --- EFFETTO ZOOM DOTTORI --- */
+        .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 60px; }
+        .doctor-card { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; text-align: center; }
+        .doctor-card a { text-decoration: none; color: inherit; }
+        .doctor-card:hover { transform: scale(1.05); }
+        .doctor-card img { width: 100%; height: 350px; object-fit: cover; object-position: top; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .doctor-card h4 { font-family: 'Prata', serif; font-size: 1.3rem; margin-bottom: 5px; color: var(--dark-verde); }
+        .doctor-card p { color: var(--logo-verde); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- CONTATTI --- */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; background: var(--dark-verde); color: white; }
+        .contact-box { padding: 80px 8%; }
+        .contact-box.form-side { background: white; color: var(--text); }
+        .form-side input, .form-side select, .form-side textarea { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; font-family: 'Montserrat', sans-serif; transition: 0.3s; }
+        .form-side input:focus, .form-side textarea:focus { border-color: var(--logo-verde); outline: none; }
+        .form-side button { width: 100%; padding: 15px; background: var(--logo-verde); color: white; border: none; font-weight: 700; font-size: 1.1rem; cursor: pointer; border-radius: 4px; text-transform: uppercase; transition: 0.3s; }
+        .form-side button:hover { background: var(--dark-verde); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        
+        .hours-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 1rem; }
+        .contact-info p { margin-bottom: 10px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+        .contact-info a { color: white; text-decoration: none; transition: 0.3s; }
+        .contact-info a:hover { color: var(--logo-verde); }
+
+        /* --- FOOTER & SOCIAL --- */
+        footer { padding: 40px 8%; text-align: center; background: #f8f8f8; border-top: 1px solid #eee; }
+        .footer-socials { margin-bottom: 25px; }
+        .footer-socials a { color: #555; font-size: 2rem; margin: 0 15px; transition: 0.3s; text-decoration: none; display: inline-block; }
+        .footer-socials a:hover { color: var(--logo-verde); transform: translateY(-3px); }
+        .footer-links a { font-size: 0.8rem; color: #555; text-decoration: none; margin: 0 10px; text-transform: uppercase; font-weight: 600;}
+        .footer-links a:hover { color: var(--logo-verde); }
+
+        @media (max-width: 1024px) {
+            .tech-grid, .team-grid, .contact-grid, .aesthetic, .works-grid, .stats-grid, .reviews-grid { grid-template-columns: 1fr; gap: 20px; }
+            .specs-list { grid-template-columns: repeat(2, 1fr); }
+            .hero { padding: 100px 5% 40px 5%; height: auto; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .aesthetic div:last-child { height: 300px !important; margin-top: 30px; }
+            .nav-links { display: none; } /* Consider adding a hamburger menu for true responsiveness */
+            .clinic-section, .specs, .works, .team, .reviews-section, .stats-section, .contact-box { padding: 60px 5%; }
+            .partners-grid { gap: 30px; }
+            .partners-grid h3 { font-size: 1.2rem; }
+        }
+        @media (max-width: 600px) {
+            .specs-list { grid-template-columns: 1fr; }
+            .stats-box h3 { font-size: 2.5rem; }
+            .work-img-container { height: 180px; }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <nav>
+        <a href="#top" class="logo-link">
+            <img src="https://www.tanzidentalclinic.it/wp-content/uploads/2017/11/logo-tanzi-dental-clinic.png" alt="Tanzi Dental Clinic Logo" class="logo-img">
+        </a>
+        <div class="nav-links">
+            <a href="clinica.html">La Clinica</a>
+            <a href="#specializzazioni">Specializzazioni</a>
+            <a href="#lavori">I Lavori</a>
+            <a href="#estetica">Estetica</a>
+            <a href="staff.html">Il Team</a>
+            <a href="contatti.html" class="btn-cta btn-pulse">Prenota Consulto</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Il futuro del tuo sorriso inizia qui.</h1>
+            <p>Eccellenza odontoiatrica e trattamenti estetici d'avanguardia a Santa Maria Capua Vetere.</p>
+            <a href="contatti.html" class="hero-btn btn-pulse">Prenota il Tuo Consulto</a>
+        </div>
+    </section>
+
+    <section id="clinica" class="clinic-section">
+        <div class="section-header">
+            <h2>La Struttura</h2>
+            <p>Oltre 40 anni di esperienza supportati dalle tecnologie più avanzate. <a href="clinica.html" style="color:var(--dark-verde); font-weight:700; text-decoration:none;">Scopri di più sulla clinica.</a></p>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <h4>Diagnostica 3D</h4>
+                <p>TAC Cone Beam di ultima generazione per analisi ossee millimetriche con basse radiazioni.</p>
+            </div>
+            <div class="tech-item">
+                <h4>Scanner Intraorale</h4>
+                <p>Addio alle impronte tradizionali. Scansione ottica digitale per una precisione assoluta.</p>
+            </div>
+            <div class="tech-item">
+                <h4>Ortodonzia Invisibile</h4>
+                <p>Trattamenti ortodontici invisibili per ogni età, senza disagi estetici.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-box"><h3 class="counter" data-target="40">0</h3><p>Anni di Esperienza</p></div>
+            <div class="stat-box"><h3 class="counter" data-target="10000">0</h3><p>Pazienti Soddisfatti</p></div>
+            <div class="stat-box"><h3 class="counter" data-target="4">0</h3><p>Medici Specialisti</p></div>
+            <div class="stat-box"><h3 class="counter" data-target="16">0</h3><p>Branche Trattate</p></div>
+        </div>
+    </section>
+
+    <section id="specializzazioni" class="specs" style="background: var(--light-bg);">
+        <div class="section-header">
+            <h2>Odontoiatria Specialistica</h2>
+            <p>Seleziona una specializzazione per leggere gli approfondimenti sul nostro sito ufficiale.</p>
+        </div>
+        <div class="specs-list">
+            <a href="odontoiatria-conservativa.html"><div class="spec-box">Odontoiatria Conservativa</div></a>
+            <a href="endodonzia.html"><div class="spec-box">Endodonzia</div></a>
+            <a href="pedodonzia.html"><div class="spec-box">Pedodonzia</div></a>
+            <a href="ortodonzia.html"><div class="spec-box">Ortodonzia</div></a>
+            <a href="ortodonzia-invisibile.html"><div class="spec-box">Ortodonzia Invisibile</div></a>
+            <a href="protesi.html"><div class="spec-box">Protesi</div></a>
+            <a href="chirurgia-orale.html"><div class="spec-box">Chirurgia Orale</div></a>
+            <a href="chirurgia-maxillo-facciale.html"><div class="spec-box">Chirurgia Maxillo-Facciale</div></a>
+            <a href="implantologia.html"><div class="spec-box">Implantologia</div></a>
+            <a href="igiene-orale.html"><div class="spec-box">Igiene Orale</div></a>
+            <a href="sbiancamento-dentale.html"><div class="spec-box">Sbiancamento Dentale</div></a>
+            <a href="gnatologia.html"><div class="spec-box">Gnatologia</div></a>
+            <a href="disturbi-sonno.html"><div class="spec-box">Disturbi del Sonno</div></a>
+            <a href="diagnostica-immagini.html"><div class="spec-box">Diagnostica Immagini</div></a>
+            <a href="parodontologia.html"><div class="spec-box">Parodontologia</div></a>
+            <a href="odontologia-forense.html"><div class="spec-box">Odontologia Forense</div></a>
+        </div>
+    </section>
+
+    <section id="lavori" class="works">
+        <div class="section-header">
+            <h2>I Nostri Lavori</h2>
+            <p>Casi clinici reali seguiti presso il nostro studio e documentati nel dettaglio.</p>
+        </div>
+        <div class="works-grid">
+            <div class="work-card">
+                <div class="work-img-container">
+                    <div style="background-image: url('https://plus.unsplash.com/premium_photo-1661766524331-50798363714c?q=80&w=400');"><span>Prima</span></div>
+                    <div style="background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=400');"><span>Dopo</span></div>
+                </div>
+                <div style="padding: 20px;">
+                    <h4 style="font-family: 'Prata'; color: var(--dark-verde);">Implantologia All-on-4</h4>
+                    <p style="font-size: 0.8rem; color: #666;">Riabilitazione completa dell'arcata superiore.</p>
+                    <a href="implantologia.html" style="display:inline-block; margin-top:10px; font-size: 0.8rem; color: var(--logo-verde); font-weight: 700; text-decoration: none;">LEGGI DI PIÙ <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="work-card">
+                <div class="work-img-container">
+                    <div style="background-image: url('https://www.tanzidentalclinic.it/wp-content/uploads/2017/11/apparecchio-ortodontico-prima.jpg');"><span>Prima</span></div>
+                    <div style="background-image: url('https://www.tanzidentalclinic.it/wp-content/uploads/2017/11/apparecchio-ortodontico-dopo.jpg');"><span>Dopo</span></div>
+                </div>
+                <div style="padding: 20px;">
+                    <h4 style="font-family: 'Prata'; color: var(--dark-verde);">Ortodonzia Invisibile</h4>
+                    <p style="font-size: 0.8rem; color: #666;">Allineamento dentale invisibile con Invisalign.</p>
+                    <a href="ortodonzia-invisibile.html" style="display:inline-block; margin-top:10px; font-size: 0.8rem; color: var(--logo-verde); font-weight: 700; text-decoration: none;">LEGGI DI PIÙ <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="work-card">
+                <div class="work-img-container">
+                    <div style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400');"><span>Prima</span></div>
+                    <div style="background-image: url('https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=400');"><span>Dopo</span></div>
+                </div>
+                <div style="padding: 20px;">
+                    <h4 style="font-family: 'Prata'; color: var(--dark-verde);">Faccette Estetiche</h4>
+                    <p style="font-size: 0.8rem; color: #666;">Restyling del sorriso in ceramica ultrasottile.</p>
+                     <a href="protesi.html" style="display:inline-block; margin-top:10px; font-size: 0.8rem; color: var(--logo-verde); font-weight: 700; text-decoration: none;">LEGGI DI PIÙ <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="estetica" class="aesthetic">
+        <div>
+            <h2>Aesthetic <br>Division</h2>
+            <p style="margin-top: 20px; font-size: 1.1rem; color: #ddd;">L'armonia del volto completa il tuo sorriso.</p>
+            <ul class="aesthetic-list">
+                <li>Filler Acido Ialuronico</li>
+                <li>Botox</li>
+                <li>Biorivitalizzazione</li>
+                <li>Trattamento PRX-T33</li>
+            </ul>
+        </div>
+        <div style="height: 400px; background: url('https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=800') center/cover; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; box-shadow: 0 15px 40px rgba(0,0,0,0.5);"></div>
+    </section>
+
+    <section id="team" class="team">
+        <div class="section-header">
+            <h2>I Nostri Specialisti</h2>
+            <p>Un team di medici dentisti specializzati e costantemente aggiornati.</p>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 40px;">
+            <img src="https://www.tanzidentalclinic.it/wp-content/uploads/2018/06/tanzi-staff-interno.jpg" alt="Lo staff della Tanzi Dental Clinic" style="width: 100%; max-width: 900px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        </div>
+
+        <div class="team-grid">
+            <div class="doctor-card">
+                <a href="dott-vito-tanzi.html">
+                    <img src="https://www.tanzidentalclinic.it/wp-content/uploads/2017/11/Dott.jpg" alt="Dott. Vito Giuseppe Tanzi">
+                    <h4>Dott. Vito Giuseppe Tanzi</h4>
+                    <p>Chirurgo Maxillo-Facciale</p>
+                </a>
+            </div>
+            <div class="doctor-card">
+                <a href="dottssa-caterina-tanzi.html">
+                    <img src="https://www.tanzidentalclinic.it/wp-content/uploads/2017/11/Dottssa-Caterina-Tanzi.jpg" alt="Dott.ssa Caterina Tanzi">
+                    <h4>Dott.ssa Caterina Tanzi</h4>
+                    <p>Ortodonzia e Ortodonzia Invisibile</p>
+                </a>
+            </div>
+            <div class="doctor-card">
+                <a href="dott-angelo-sodano.html">
+                    <img src="https://www.tanzidentalclinic.it/wp-content/uploads/2017/11/Dott-Angelo-Raffaele-Sodano.jpg" alt="Dott. Angelo Raffaele Sodano">
+                    <h4>Dott. Angelo Raffaele Sodano</h4>
+                    <p>Endodonzia e Conservativa</p>
+                </a>
+            </div>
+            <div class="doctor-card">
+                 <a href="dottssa-franca-de-gregorio.html">
+                    <img src="https://www.tanzidentalclinic.it/wp-content/uploads/2017/11/Franca-De-Gregorio.jpg" alt="Dott.ssa Franca De Gregorio">
+                    <h4>Dott.ssa Franca De Gregorio</h4>
+                    <p>Pedodonzia</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners-section">
+        <p>I partner tecnologici ed estetici che garantiscono l'eccellenza</p>
+        <div class="partners-grid">
+            <h3 style="color:#2a74c7;">invisalign</h3>
+            <h3 style="font-family:'Prata'; color:#111;">BlancOne</h3>
+            <h3 style="font-weight:300; letter-spacing:3px;">PRX-T33</h3>
+            <h3 style="color:#d49f19;">WiQo</h3>
+            <h3 style="font-style:italic;">Straumann</h3>
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <div class="section-header">
+            <h2>Dicono di Noi</h2>
+            <p>La fiducia dei nostri pazienti è il nostro successo più grande.</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <i class="fab fa-google g-icon"></i>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Disponibilità e cortesia. Sono anni che mi affido alle mani dello staff Tanzi. Un plauso speciale al Dottor Sodano, professionista serio e meticoloso che sa mettere a proprio agio e rassicurare il paziente."</p>
+                <h5>Daniele M.</h5>
+            </div>
+            <div class="review-card">
+                <i class="fab fa-google g-icon"></i>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Clinica all'avanguardia con macchinari di ultima generazione. Personale estremamente qualificato ed accogliente. Ho fatto estetica del sorriso e ora ho una bocca perfetta. Assolutamente consigliati."</p>
+                <h5>Laura T.</h5>
+            </div>
+            <div class="review-card">
+                <i class="fab fa-google g-icon"></i>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Il top dell'ortodonzia invisibile in zona! Mai trovata una struttura così attenta ai dettagli. Hanno risolto un problema estetico a cui non trovavo altra via d'uscita senza nessun dolore, il risultato è eccezionale."</p>
+                <h5>Alessandro G.</h5>
+            </div>
+        </div>
+    </section>
+
+    <section id="contatti" class="contact-grid">
+        <div class="contact-box form-side">
+            <h2 style="font-family: 'Prata', serif; margin-bottom: 30px; color: var(--dark-verde);">Richiedi un Consulto</h2>
+            <form action="contatti.html" method="GET">
+                <input type="text" placeholder="Nome completo" required>
+                <input type="tel" placeholder="Cellulare" required>
+                <select required>
+                    <option value="" disabled selected>Tipo di richiesta</option>
+                    <option value="visita">Prima Visita</option>
+                    <option value="estetica">Medicina Estetica</option>
+                    <option value="info">Informazioni Generali</option>
+                </select>
+                <textarea rows="4" placeholder="Come possiamo aiutarti?"></textarea>
+                <button type="submit" class="btn-pulse">Invia Richiesta</button>
+            </form>
+        </div>
+        <div class="contact-box">
+            <h2 style="font-family: 'Prata', serif; margin-bottom: 30px;">Orari di Studio</h2>
+            <div class="hours-row"><span>Lunedì - Giovedì</span><span>09:00 - 19:30</span></div>
+            <div class="hours-row"><span>Venerdì</span><span>09:00 - 19:30</span></div>
+            <div class="hours-row"><span>Sabato</span><span>Su Appuntamento</span></div>
+            
+            <div class="contact-info" style="margin-top: 50px;">
+                <p><i class="fas fa-map-marker-alt" style="color:var(--logo-verde);"></i> <a href="https://goo.gl/maps/Ptzq9nF5T4F2" target="_blank">Via Galatina 204, S. Maria C.V. (CE)</a></p>
+                <p><i class="fas fa-phone-alt" style="color:var(--logo-verde);"></i> <a href="tel:+390823845890">0823 845890</a></p>
+                <p><i class="fas fa-envelope" style="color:var(--logo-verde);"></i> <a href="mailto:info@tanzidentalclinic.it">info@tanzidentalclinic.it</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/tanzidentalclinic/" target="_blank" title="Seguici su Facebook"><i class="fab fa-facebook-square"></i></a>
+            <a href="https://www.instagram.com/tanzidentalclinic/" target="_blank" title="Seguici su Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-links" style="margin-bottom: 20px;">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="cookie-policy.html">Cookie Policy</a>
+            <a href="note-legali.html">Note Legali</a>
+        </div>
+        <p style="font-size: 0.75rem; color: #777; letter-spacing: 1px;">© 2026 TANZI DENTAL CLINIC | P.IVA 00356280610 | ALL RIGHTS RESERVED</p>
+    </footer>
+
+    <script>
+        // Animazione Numeri (Counters)
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const startCounting = (el) => {
+            const target = +el.getAttribute('data-target');
+            const count = +el.innerText;
+            const inc = target / speed;
+
+            if (count < target) {
+                el.innerText = Math.ceil(count + inc);
+                setTimeout(() => startCounting(el), 15);
+            } else {
+                el.innerText = target + (target > 100 ? "+" : "");
+            }
+        };
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCounting(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Attiva lo smooth-scroll globale solo DOPO che la pagina è caricata (altrimenti anima l'arrivo dalle altre pagine)
+        setTimeout(() => {
+            document.documentElement.classList.add('smooth');
+        }, 100);
+        
+        counters.forEach(counter => observer.observe(counter));
+    </script>
+
+</body>
+</html>

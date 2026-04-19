@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostica per immagini | Tanzi Dental Clinic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Prata&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root { --logo-verde: #8cc63f; --dark-verde: #264c15; --text: #1A1A1A; --light-bg: #F8FBFA; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--light-bg); line-height: 1.8; overflow-x: hidden;}
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100;}
+        .logo-img { height: 50px; }
+        .hero-page { background: linear-gradient(135deg, #112211, var(--dark-verde)); padding: 100px 8%; color: white; text-align: center; }
+        .hero-page h1 { font-family: 'Prata', serif; font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 20px; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .page-content { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; max-width: 1200px; margin: -50px auto 100px auto; padding: 0 8%; position: relative; z-index: 10;}
+        .main-text { background: white; padding: 50px; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); font-size: 1.1rem; color: #444; word-wrap: break-word; }
+        .main-text p { margin-bottom: 25px; }
+        .sidebar { position: sticky; top: 120px; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); text-align: center; border-top: 5px solid var(--logo-verde); max-height: 350px;}
+        .sidebar h3 { font-family: 'Prata', serif; font-size: 1.5rem; color: var(--dark-verde); margin-bottom: 20px;}
+        .sidebar p { font-size: 0.95rem; color: #666; margin-bottom: 30px;}
+        
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(140, 198, 63, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(140, 198, 63, 0); } 100% { box-shadow: 0 0 0 0 rgba(140, 198, 63, 0); } }
+        .btn-pulse { animation: pulse 2s infinite; display: block; width: 100%; padding: 15px; background: var(--logo-verde); color: white; text-decoration: none; border-radius: 4px; font-weight: 700; font-size: 1rem; text-transform: uppercase; transition: 0.3s; }
+        .btn-pulse:hover { background: var(--dark-verde); transform: translateY(-3px); }
+        .back-btn { display: inline-block; margin-top: 30px; color: var(--text); font-weight: 700; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        .back-btn:hover { color: var(--logo-verde); }
+        
+        @media (max-width: 900px) { 
+            .page-content { grid-template-columns: 1fr; margin-top: 20px; gap: 30px; padding: 0 5%;} 
+            .sidebar { position: relative; top: 0; padding: 30px 20px; } 
+            .main-text { padding: 30px 20px; }
+            .hero-page { padding: 60px 5%; }
+            nav { padding: 15px 5%; }
+        }
+    </style>
+
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo-link">
+            <img src="https://www.tanzidentalclinic.it/wp-content/uploads/2017/11/logo-tanzi-dental-clinic.png" alt="Tanzi Dental Clinic" class="logo-img">
+        </a>
+        <strong style="margin-left:20px; color:var(--dark-verde); font-family:'Prata', serif; font-size:1.2rem; text-transform:capitalize; display:none;">Diagnostica per immagini</strong>
+        <a href="index.html#specializzazioni" style="text-decoration:none; color:var(--text); font-weight:700; text-transform:uppercase; font-size:0.8rem; margin-left:auto;"><i class="fas fa-arrow-left"></i> Struttura e Categorie</a>
+    </nav>
+    <div class="hero-page">
+        <h1 style="text-transform: capitalize;">Diagnostica per immagini</h1>
+        <p style="font-size:1.2rem; opacity:0.9;">Affidati all'eccellenza e ai migliori specialisti.</p>
+    </div>
+    <div class="page-content">
+        <div class="main-text">
+            <p>Negli ultimi anni l’evoluzione della diagnostica radiologica e della strumentazione ha avuto un grandissimo miglioramento sia qualitativo che quantitativo. Lo studio è dotato dei più moderni e sofisticati sistemi di acquisizione di immagini rx digitali:</p><p>I dati acquisiti sono elaborati da un software eXam Vision oppure con INVIVO di Anatomage.E’ possibile visualizzare con accuratezza i rapporti tra i denti del giudizio e il nervo alveolare, la morfologia delle radici o le fratture radicolari piuttosto che quelle ossee, i denti inclusi, i seni mascellari, il setto e i turbinati nasali, gli spazi aerei respiratori, le formazioni cistiche, malformative o tumorali dei mascellari, eventualmente con chiare e accurate ricostruzioni tridimensionali, fino alla sovrapposizione dei tessuti muscolari e della pelle del volto.</p><p>Simulare il posizionamento di impianti endossei, generare file dicom per software di programmazione implantari quali Nobel guide o Simplant, simulare e programmare interventi di correzione delle dismorfie facciali.</p>
+            <a href="index.html#specializzazioni" class="back-btn"><i class="fas fa-arrow-left"></i> Torna alle Categorie</a>
+        </div>
+        <div class="sidebar">
+            <h3>Hai bisogno di un consulto?</h3>
+            <p>Il nostro team è a tua disposizione per analizzare il caso con strumenti minimamente invasivi.</p>
+            <a href="contatti.html" class="btn-pulse">Prenota Ora</a>
+        </div>
+    </div>
+</body>
+</html>
